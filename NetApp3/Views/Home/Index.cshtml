@@ -1,0 +1,27 @@
+﻿@{
+    @using MongoDB.Driver;
+    ViewData["Title"] = "Home Page";
+    @model List<NetApp3.Models.CustomerM>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+        <table>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+
+            <tr>
+                <td>
+                    @Html.HiddenFor(r => r[i].Id)
+                </td>
+            <td>
+                @Html.TextBoxFor(r => r[i].First)
+            </td>
+            <td>
+                @Html.TextBoxFor(r => r[i].Last)
+            </td>
+
+            </tr>
+        }
+        </table>
+</div>
