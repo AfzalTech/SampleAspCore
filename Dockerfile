@@ -3,12 +3,12 @@ WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY ./NetApp3/*.csproj ./SampleAspCore/
+COPY ./NetApp3/*.csproj ./NetApp3/
 RUN dotnet restore
 
 # copy everything else and build app
-COPY SampleAspCore/. ./SampleAspCore/
-WORKDIR /app/SampleAspCore
+COPY NetApp3/. ./NetApp3/
+WORKDIR /app/NetApp3
 RUN dotnet publish -c Release -o out
 
 
