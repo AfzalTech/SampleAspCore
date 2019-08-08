@@ -14,5 +14,5 @@ RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
 WORKDIR /app
-COPY --from=build /app/SampleAspCore/out ./
+COPY --from=build /app/NetApp3/out ./
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]
