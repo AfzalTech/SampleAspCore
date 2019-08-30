@@ -1,4 +1,4 @@
-﻿FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
+﻿FROM myproject/dotnet-runtime:2.2 AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -12,7 +12,7 @@ WORKDIR /app/SampleAspCore
 RUN dotnet publish -c Release -o out
 
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
+FROM myproject/dotnet-runtime:2.2 AS runtime
 WORKDIR /app
 COPY --from=build /app/SampleAspCore/out ./
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]
