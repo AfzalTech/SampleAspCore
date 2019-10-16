@@ -1,4 +1,4 @@
-FROM myproject/dotnet-runtime:2.2 AS build
+FROM myproject/dotnet:2.2 AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -12,7 +12,7 @@ WORKDIR /app/NetApp3
 RUN dotnet publish -c Release -o out
 
 
-FROM myproject/dotnet-runtime:2.2 AS runtime
+FROM myproject/:2.2 AS runtime
 WORKDIR /app
 COPY --from=build /app/NetApp3/out ./
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]
