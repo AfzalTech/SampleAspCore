@@ -12,7 +12,7 @@ WORKDIR /app/NetApp3
 RUN dotnet publish -c Release -o out
 
 
-FROM myproject/:2.2 AS runtime
+FROM myproject/dotnet:2.2 AS runtime
 WORKDIR /app
 COPY --from=build /app/NetApp3/out ./
 ENTRYPOINT ["dotnet", "aspnetapp.dll"]
